@@ -67,3 +67,14 @@ En `components/site/experiencia.tsx`, cambia la constante `VIDEO_SRC` de
 `null` a la ruta del video (por ejemplo `/videos/experiencia.mp4`, colocando
 el archivo en `public/videos/`). El scroll-scrubbing ya está listo, solo
 necesita el archivo real.
+
+## Deploy a GitHub Pages
+
+El sitio se publica desde la rama `gh-pages` en https://ikyet.github.io/mrelote/.
+
+```bash
+NEXT_PUBLIC_BASE_PATH=/mrelote npm run build   # en PowerShell: $env:NEXT_PUBLIC_BASE_PATH='/mrelote'; npm run build
+touch out/.nojekyll
+```
+
+Luego sube el contenido de `out/` a la rama `gh-pages`.

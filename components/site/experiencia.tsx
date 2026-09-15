@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { PRODUCTS } from "@/lib/content";
 import { ScrollReveal } from "@/components/site/scroll-reveal";
-import { cn } from "@/lib/utils";
+import { asset, cn } from "@/lib/utils";
 
 const N = PRODUCTS.length;
 
@@ -212,7 +212,7 @@ export function Experiencia() {
                     <div className="relative h-[40vh] w-[64vw] max-w-[380px] shrink-0 overflow-hidden sm:h-[46vh] sm:w-[78vw]">
                       {!framesLoaded && (
                         <Image
-                          src="/images/mascot.jpg"
+                          src={asset("/images/mascot.jpg")}
                           alt="Mr. Elote, la mascota de la marca"
                           fill
                           className="object-contain"

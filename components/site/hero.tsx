@@ -1,14 +1,15 @@
 "use client";
 
 import ScrollExpandMedia from "@/components/ui/scroll-expansion-hero";
+import { asset } from "@/lib/utils";
 
 export function Hero() {
   return (
     <section id="inicio">
       <ScrollExpandMedia
         mediaType="image"
-        mediaSrc="/images/hero-kiosk.jpg"
-        bgImageSrc="/images/hero-bg.jpg"
+        mediaSrc={asset("/images/hero-kiosk.jpg")}
+        bgImageSrc={asset("/images/hero-bg.jpg")}
         title="mr. élote"
         date="Franquicia de eloterías gourmet"
         scrollToExpand="Desliza para descubrir la marca ↓"

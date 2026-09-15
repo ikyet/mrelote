@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ScrollReveal } from "@/components/site/scroll-reveal";
+import { asset } from "@/lib/utils";
 
 const STATS = [
   { year: "2016", label: "Nace la marca en Xalapa, Veracruz" },
@@ -28,7 +29,7 @@ export function QuienesSomos() {
             <div className="relative">
               <div className="relative aspect-[4/5] overflow-hidden rounded-3xl shadow-soft">
                 <Image
-                  src="/images/kiosk.jpg"
+                  src={asset("/images/kiosk.jpg")}
                   alt="Fachada de una sucursal Mr. Elote"
                   fill
                   className="object-cover"
@@ -104,7 +105,7 @@ export function QuienesSomos() {
           <div className="grid gap-6 rounded-3xl bg-brand-ink px-7 py-9 text-center sm:grid-cols-[auto_1fr] sm:items-center sm:px-11 sm:text-left">
             <div className="mx-auto h-[110px] w-[110px] shrink-0 overflow-hidden rounded-full border-2 border-brand-yellow sm:mx-0">
               <Image
-                src="/images/esquite.jpg"
+                src={asset("/images/esquite.jpg")}
                 alt="Esquite Mr. Elote"
                 width={110}
                 height={110}
