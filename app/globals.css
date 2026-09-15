@@ -1,0 +1,168 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --radius: 0.625rem;
+
+  /* shadcn/ui base tokens (neutral, new-york style) — kept so future
+     shadcn components (Button, Card, Dialog, ...) drop in and match. */
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+
+  /* ---------- Mr. Elote brand palette (kept identical to the site's
+     original design — see project docs) ---------- */
+  --brand-ink: #140b08;
+  --brand-maroon: #2b0705;
+  --brand-green-950: #07230f;
+  --brand-green-900: #0c3319;
+  --brand-green-800: #124b25;
+  --brand-green-700: #1a6b34;
+  --brand-green: #1f8a42;
+  --brand-green-500: #2fae55;
+  --brand-green-300: #8fd6a6;
+  --brand-yellow: #fdd902;
+  --brand-yellow-600: #e0ae00;
+  --brand-yellow-100: #fff1c2;
+  --brand-cream: #fff8e9;
+  --brand-paper: #fffdf7;
+  --brand-shadow-soft: 0 10px 24px -14px rgba(20, 11, 8, 0.22);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  /* brand color + font tokens usable as bg-brand-*, text-brand-*, font-display, etc. */
+  --color-brand-ink: var(--brand-ink);
+  --color-brand-maroon: var(--brand-maroon);
+  --color-brand-green-950: var(--brand-green-950);
+  --color-brand-green-900: var(--brand-green-900);
+  --color-brand-green-800: var(--brand-green-800);
+  --color-brand-green-700: var(--brand-green-700);
+  --color-brand-green: var(--brand-green);
+  --color-brand-green-500: var(--brand-green-500);
+  --color-brand-green-300: var(--brand-green-300);
+  --color-brand-yellow: var(--brand-yellow);
+  --color-brand-yellow-600: var(--brand-yellow-600);
+  --color-brand-yellow-100: var(--brand-yellow-100);
+  --color-brand-cream: var(--brand-cream);
+  --color-brand-paper: var(--brand-paper);
+
+  --font-display: var(--font-anton);
+  --font-body: var(--font-baloo);
+  --font-script: var(--font-marker);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 84px;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-brand-cream text-brand-ink;
+    font-family: var(--font-baloo), ui-sans-serif, system-ui, sans-serif;
+  }
+}
+
+@layer utilities {
+  .shadow-soft {
+    box-shadow: var(--brand-shadow-soft);
+  }
+}
+
+@layer components {
+  /* Explicit width:100% + min-width:0 here is deliberate: the static build
+     of this site once shipped without them and inputs overflowed their
+     card on narrow phones (see project notes). Keeping the fix explicit
+     so it survives future edits. */
+  .input-field {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    border-radius: 12px;
+    border: 2px solid rgba(20, 11, 8, 0.14);
+    background: var(--brand-paper);
+    padding: 0.85em 1em;
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--brand-ink);
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+  .input-field:focus {
+    outline: none;
+    border-color: var(--brand-green);
+    box-shadow: 0 0 0 4px rgba(31, 138, 66, 0.15);
+  }
+}
