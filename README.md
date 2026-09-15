@@ -70,11 +70,13 @@ necesita el archivo real.
 
 ## Deploy a GitHub Pages
 
-El sitio se publica desde la rama `gh-pages` en https://ikyet.github.io/mrelote/.
+El sitio se publica desde la rama `gh-pages` en https://mrelotemix.com (dominio en Porkbun, DNS apuntando a GitHub Pages).
 
 ```bash
-NEXT_PUBLIC_BASE_PATH=/mrelote npm run build   # en PowerShell: $env:NEXT_PUBLIC_BASE_PATH='/mrelote'; npm run build
+npm run build
+echo -n mrelotemix.com > out/CNAME
 touch out/.nojekyll
 ```
 
-Luego sube el contenido de `out/` a la rama `gh-pages`.
+Luego sube el contenido de `out/` a la rama `gh-pages`. El archivo `CNAME` es obligatorio: sin él GitHub quita el dominio.
+`NEXT_PUBLIC_BASE_PATH` solo se usa si el sitio vuelve a vivir en un subdirectorio (p. ej. `/mrelote`).
