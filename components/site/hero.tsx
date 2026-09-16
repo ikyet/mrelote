@@ -10,7 +10,8 @@ export function Hero() {
         mediaType="image"
         mediaSrc={asset("/images/hero-kiosk.jpg")}
         bgImageSrc={asset("/images/hero-bg.jpg")}
-        title="mr. élote"
+        title="Mr. Elote Mix Gourmet"
+        logoSrc={asset("/images/logo-b.png")}
         date="Franquicia de eloterías gourmet"
         scrollToExpand="Desliza para descubrir la marca ↓"
       >

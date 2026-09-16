@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { NAV_LINKS } from "@/lib/content";
 import { useActiveSection } from "@/hooks/use-active-section";
-import { cn } from "@/lib/utils";
+import { asset, cn } from "@/lib/utils";
 
 const SECTION_IDS = NAV_LINKS.map((l) => l.id);
 
@@ -14,7 +15,7 @@ export function Navbar() {
   const active = useActiveSection(SECTION_IDS);
 
   // Al entrar al sitio (todavía en el Hero) la barra se ve "limpia": solo el
-  // logo "mr. élote", sin links/botón/burger — igual que pidió Luis. El resto
+  // logo de la marca, sin links/botón/burger — igual que pidió Luis. El resto
   // aparece con fade recién cuando el usuario ya bajó más de 40px (el mismo
   // umbral que le pone el fondo oscuro a la barra), es decir, después de que
   // termina la animación del Hero.
@@ -40,28 +41,14 @@ export function Navbar() {
           className="flex items-center gap-2.5 text-brand-cream"
           onClick={close}
         >
-          <svg
-            className="h-9 w-9 fill-brand-yellow"
-            viewBox="0 0 64 64"
-            aria-hidden="true"
-          >
-            <rect x="2" y="2" width="60" height="60" rx="22" />
-            <path
-              d="M16 32c4 9 12 15 16 15s12-6 16-15"
-              stroke="#140b08"
-              strokeWidth={6}
-              strokeLinecap="round"
-              fill="none"
-            />
-          </svg>
-          <span className="leading-tight">
-            <span className="block font-display text-lg tracking-wide">
-              mr. <b className="text-brand-yellow">élote</b>
-            </span>
-            <span className="block text-[0.62rem] font-semibold tracking-[0.14em] text-brand-cream/70">
-              MIX GOURMET
-            </span>
-          </span>
+          <Image
+            src={asset("/images/logo-a.png")}
+            alt="Mr. Elote Mix Gourmet"
+            width={671}
+            height={191}
+            priority
+            className="h-10 w-auto"
+          />
         </a>
 
         <div

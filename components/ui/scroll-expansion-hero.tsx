@@ -17,6 +17,8 @@ interface ScrollExpandMediaProps {
   posterSrc?: string;
   bgImageSrc: string;
   title?: string;
+  /** Si se pasa, se muestra este logo en lugar del título en texto. */
+  logoSrc?: string;
   date?: string;
   scrollToExpand?: string;
   textBlend?: boolean;
@@ -29,6 +31,7 @@ const ScrollExpandMedia = ({
   posterSrc,
   bgImageSrc,
   title,
+  logoSrc,
   date,
   scrollToExpand,
   textBlend,
@@ -313,18 +316,44 @@ const ScrollExpandMedia = ({
                   textBlend ? "mix-blend-difference" : "mix-blend-normal"
                 }`}
               >
-                <motion.h2
-                  className="text-4xl md:text-5xl lg:text-6xl font-body font-extrabold tracking-normal text-brand-cream transition-none [text-shadow:0_2px_18px_rgba(0,0,0,0.55)]"
-                  style={{ transform: `translateX(-${textTranslateX}vw)` }}
-                >
-                  {firstWord}
-                </motion.h2>
-                <motion.h2
-                  className="text-4xl md:text-5xl lg:text-6xl font-body font-extrabold tracking-normal text-center text-brand-yellow transition-none [text-shadow:0_2px_18px_rgba(0,0,0,0.55)]"
-                  style={{ transform: `translateX(${textTranslateX}vw)` }}
-                >
-                  {restOfTitle}
-                </motion.h2>
+                {logoSrc ? (
+                  // El logo se desvanece y se encoge un poco conforme la
+                  // imagen del kiosko se expande, en vez de partirse en dos
+                  // como el título en texto. Ancho elegido para que la palabra
+                  // "élote" del logo mida lo mismo que con text-4xl/5xl/6xl.
+                  <div
+                    className="transition-none"
+                    style={{
+                      opacity: Math.max(0, 1 - scrollProgress * 1.4),
+                      transform: `scale(${1 - scrollProgress * 0.2})`,
+                    }}
+                  >
+                    <h1 className="sr-only">{title}</h1>
+                    <Image
+                      src={logoSrc}
+                      alt={title || "Logo"}
+                      width={1213}
+                      height={347}
+                      priority
+                      className="h-auto w-[120px] md:w-[160px] lg:w-[200px] drop-shadow-[0_2px_18px_rgba(0,0,0,0.55)]"
+                    />
+                  </div>
+                ) : (
+                  <>
+                    <motion.h2
+                      className="text-4xl md:text-5xl lg:text-6xl font-body font-extrabold tracking-normal text-brand-cream transition-none [text-shadow:0_2px_18px_rgba(0,0,0,0.55)]"
+                      style={{ transform: `translateX(-${textTranslateX}vw)` }}
+                    >
+                      {firstWord}
+                    </motion.h2>
+                    <motion.h2
+                      className="text-4xl md:text-5xl lg:text-6xl font-body font-extrabold tracking-normal text-center text-brand-yellow transition-none [text-shadow:0_2px_18px_rgba(0,0,0,0.55)]"
+                      style={{ transform: `translateX(${textTranslateX}vw)` }}
+                    >
+                      {restOfTitle}
+                    </motion.h2>
+                  </>
+                )}
               </div>
             </div>
 

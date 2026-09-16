@@ -1,24 +1,20 @@
+import Image from "next/image";
 import { WHATSAPP_NUMBER } from "@/lib/content";
+import { asset } from "@/lib/utils";
 
 export function Footer() {
   return (
     <footer className="bg-brand-ink text-brand-cream/70">
       <div className="mx-auto grid max-w-6xl gap-8 px-5 py-14 sm:px-8 sm:pb-7 sm:pt-16 md:grid-cols-[1.3fr_1fr_1fr]">
         <div>
-          <a href="#inicio" className="flex items-center gap-2.5 text-brand-cream">
-            <svg className="h-9 w-9 fill-brand-yellow" viewBox="0 0 64 64" aria-hidden="true">
-              <rect x="2" y="2" width="60" height="60" rx="22" />
-              <path
-                d="M16 32c4 9 12 15 16 15s12-6 16-15"
-                stroke="#140b08"
-                strokeWidth={6}
-                strokeLinecap="round"
-                fill="none"
-              />
-            </svg>
-            <span className="font-display text-lg tracking-wide">
-              mr. <b className="text-brand-yellow">élote</b>
-            </span>
+          <a href="#inicio" className="inline-flex">
+            <Image
+              src={asset("/images/logo-a.png")}
+              alt="Mr. Elote Mix Gourmet"
+              width={671}
+              height={191}
+              className="h-10 w-auto"
+            />
           </a>
           <p className="mt-3.5 max-w-[36ch] text-sm leading-relaxed">
             Esquites y elotes gourmet con personalidad, nacidos en Xalapa en
