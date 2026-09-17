@@ -160,10 +160,10 @@ export function Experiencia() {
     <section id="experiencia" className="px-5 py-16 sm:px-8 sm:py-24" style={{ backgroundColor: FRAME_BG }}>
       <div className="mx-auto max-w-6xl">
         <ScrollReveal>
-          <span className="mb-2 block text-sm font-bold tracking-[0.14em] text-brand-yellow-600">
+          <span className="mb-2 block font-accent text-sm font-extrabold tracking-[0.14em] text-brand-yellow-600">
             LA EXPERIENCIA MR. ELOTE
           </span>
-          <h2 className="font-display text-3xl uppercase tracking-wide text-brand-green-900 sm:text-4xl">
+          <h2 className="font-display text-3xl font-extrabold uppercase text-brand-green-900 sm:text-4xl">
             Algunos productos...
           </h2>
           <p className="mt-4 max-w-2xl text-brand-ink/70">
@@ -203,7 +203,7 @@ export function Experiencia() {
                     style={{ backgroundColor: product.bg }}
                   >
                     <div className="flex w-full max-w-md flex-col sm:min-w-0 sm:max-w-none sm:flex-1">
-                      <h3 className="font-display text-4xl uppercase leading-[0.95] tracking-wide text-brand-green-900">
+                      <h3 className="font-display text-4xl font-extrabold uppercase leading-[0.95] text-brand-green-900">
                         {product.name}
                       </h3>
                       <p className="mt-3 max-w-sm text-brand-ink/70">{product.desc}</p>

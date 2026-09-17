@@ -86,9 +86,10 @@
   --color-brand-cream: var(--brand-cream);
   --color-brand-paper: var(--brand-paper);
 
-  --font-display: var(--font-anton);
-  --font-body: var(--font-baloo);
-  --font-script: var(--font-marker);
+  --font-display: var(--font-montserrat);
+  --font-body: var(--font-open-sans);
+  --font-accent: var(--font-nunito);
+  --font-script: var(--font-nunito);
 }
 
 .dark {
@@ -132,7 +133,7 @@ html {
   }
   body {
     @apply bg-brand-cream text-brand-ink;
-    font-family: var(--font-baloo), ui-sans-serif, system-ui, sans-serif;
+    font-family: var(--font-open-sans), ui-sans-serif, system-ui, sans-serif;
   }
 }
 

@@ -16,10 +16,10 @@ export function QuienesSomos() {
     >
       <div className="mx-auto max-w-6xl">
         <ScrollReveal>
-          <span className="mb-2 block text-sm font-bold tracking-[0.14em] text-brand-green">
+          <span className="mb-2 block font-accent text-sm font-extrabold tracking-[0.14em] text-brand-green">
             QUIÉNES SOMOS
           </span>
-          <h2 className="font-display text-3xl uppercase tracking-wide sm:text-4xl">
+          <h2 className="font-display text-3xl font-extrabold uppercase sm:text-4xl">
             Más que elotes: una franquicia que enamora
           </h2>
         </ScrollReveal>
@@ -29,15 +29,15 @@ export function QuienesSomos() {
             <div className="relative">
               <div className="relative aspect-[4/5] overflow-hidden rounded-3xl shadow-soft">
                 <Image
-                  src={asset("/images/kiosk.jpg")}
+                  src={asset("/images/quienes-somos.jpg")}
                   alt="Fachada de una sucursal Mr. Elote"
                   fill
                   className="object-cover"
                   sizes="(min-width: 768px) 45vw, 90vw"
                 />
               </div>
-              <div className="absolute bottom-4 left-4 rounded-2xl bg-brand-green-900 px-5 py-4 text-brand-cream shadow-soft">
-                <b className="block font-display text-2xl text-brand-yellow">
+              <div className="absolute bottom-4 left-4 rounded-2xl bg-brand-green px-5 py-4 text-brand-cream shadow-soft">
+                <b className="block font-display text-2xl font-extrabold text-brand-yellow">
                   +8 años
                 </b>
                 <span className="text-sm leading-snug">
@@ -69,7 +69,7 @@ export function QuienesSomos() {
               <div className="mt-8 grid grid-cols-3 gap-4">
                 {STATS.map((s) => (
                   <div key={s.year}>
-                    <b className="block font-display text-2xl text-brand-green sm:text-3xl">
+                    <b className="block font-display text-2xl font-extrabold text-brand-green sm:text-3xl">
                       {s.year}
                     </b>
                     <span className="text-sm text-brand-ink/70">
@@ -81,19 +81,19 @@ export function QuienesSomos() {
             </ScrollReveal>
 
             <ScrollReveal delay={3}>
-              <div className="mt-8 rounded-2xl bg-brand-green-900 p-6 text-brand-cream">
-                <span className="text-sm font-bold tracking-[0.1em] text-brand-yellow">
+              <div className="mt-8 rounded-2xl bg-brand-green p-6 text-brand-cream">
+                <span className="font-accent text-sm font-extrabold tracking-[0.1em] text-brand-yellow">
                   EN PLENA EXPANSIÓN
                 </span>
-                <p className="mt-3 font-script text-xl leading-snug text-brand-yellow">
+                <p className="mt-3 font-script text-xl font-extrabold italic leading-snug text-brand-yellow">
                   &ldquo;Persistencia aún en la contingencia.&rdquo;
                 </p>
-                <p className="mt-2 text-sm leading-relaxed text-brand-cream/85">
+                <p className="mt-2 text-sm leading-relaxed text-brand-cream/90">
                   Bajo el liderazgo de nuestro fundador, Jorge Correa,
                   superamos las 30 sucursales y seguimos creciendo con la
                   mira puesta también en el mercado estadounidense.
                 </p>
-                <cite className="mt-3 block text-xs not-italic text-brand-cream/60">
+                <cite className="mt-3 block text-xs not-italic text-brand-cream/75">
                   — Jorge Correa, fundador de Mr. Elote Mix Gourmet
                 </cite>
               </div>
@@ -102,8 +102,8 @@ export function QuienesSomos() {
         </div>
 
         <ScrollReveal className="mt-16">
-          <div className="grid gap-6 rounded-3xl bg-brand-ink px-7 py-9 text-center sm:grid-cols-[auto_1fr] sm:items-center sm:px-11 sm:text-left">
-            <div className="mx-auto h-[110px] w-[110px] shrink-0 overflow-hidden rounded-full border-2 border-brand-yellow sm:mx-0">
+          <div className="grid gap-6 rounded-3xl bg-brand-yellow px-7 py-9 text-center sm:grid-cols-[auto_1fr] sm:items-center sm:px-11 sm:text-left">
+            <div className="mx-auto h-[110px] w-[110px] shrink-0 overflow-hidden rounded-full border-4 border-white sm:mx-0">
               <Image
                 src={asset("/images/esquite.jpg")}
                 alt="Esquite Mr. Elote"
@@ -113,11 +113,11 @@ export function QuienesSomos() {
               />
             </div>
             <div>
-              <q className="font-script text-xl leading-snug text-brand-yellow sm:text-2xl">
+              <q className="font-script text-xl font-extrabold italic leading-snug text-brand-green-800 sm:text-2xl">
                 De la vista, nace el amor. Mostramos el producto de una forma
                 que despierta los sentidos y deleita la vista.
               </q>
-              <cite className="mt-2.5 block text-sm not-italic text-brand-cream/60">
+              <cite className="mt-2.5 block text-sm not-italic text-brand-ink/65">
                 — Estrategia de marca, Mr. Elote Mix Gourmet
               </cite>
             </div>

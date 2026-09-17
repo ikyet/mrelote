@@ -24,13 +24,13 @@ export function Hero() {
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
             <a
               href="#quienes-somos"
-              className="rounded-full border-2 border-brand-ink/15 px-6 py-3 font-semibold text-brand-ink transition-colors hover:border-brand-ink/40"
+              className="rounded-full border-2 border-brand-ink/15 px-6 py-3 font-accent font-extrabold text-brand-ink transition-colors hover:border-brand-ink/40"
             >
               Conoce la marca
             </a>
             <a
               href="#lead-form"
-              className="rounded-full bg-brand-green px-6 py-3 font-semibold text-brand-cream shadow-soft transition-transform hover:-translate-y-0.5"
+              className="rounded-full bg-brand-green px-6 py-3 font-accent font-extrabold text-brand-cream shadow-soft transition-transform hover:-translate-y-0.5"
             >
               Quiero mi franquicia
             </a>

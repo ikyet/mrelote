@@ -25,13 +25,13 @@ function PlanCard({ plan }: { plan: (typeof PLANS)[number] }) {
           className="object-cover"
           sizes="(min-width: 900px) 33vw, 90vw"
         />
-        <span className="absolute left-4 top-4 rounded-full bg-brand-ink px-3 py-1.5 text-xs font-bold text-brand-cream">
+        <span className="absolute left-4 top-4 rounded-full bg-brand-green px-3 py-1.5 font-accent text-xs font-extrabold text-brand-cream">
           {plan.badge}
         </span>
       </div>
       <div className="flex flex-1 flex-col gap-3 p-6">
-        <h3 className="text-xl font-bold">{plan.name}</h3>
-        <p className="font-display text-3xl text-brand-green">
+        <h3 className="font-display text-xl font-extrabold">{plan.name}</h3>
+        <p className="font-display text-3xl font-extrabold text-brand-green">
           {plan.price}
         </p>
         <p className="-mt-2 text-xs font-bold uppercase tracking-wide text-brand-ink/70">
@@ -42,7 +42,7 @@ function PlanCard({ plan }: { plan: (typeof PLANS)[number] }) {
         </p>
         <hr className="my-1 border-dashed border-brand-ink/15" />
         <details className="text-sm">
-          <summary className="cursor-pointer font-bold text-brand-ink">
+          <summary className="cursor-pointer font-accent font-extrabold text-brand-ink">
             Qué incluye
           </summary>
           <ul className="mt-2 list-disc space-y-1 pl-5 text-brand-ink/75">
@@ -103,10 +103,10 @@ export function Franquicia() {
     >
       <div className="mx-auto max-w-6xl">
         <ScrollReveal>
-          <span className="mb-2 block text-sm font-bold tracking-[0.14em] text-brand-green">
+          <span className="mb-2 block font-accent text-sm font-extrabold tracking-[0.14em] text-brand-green">
             ADQUIERE TU FRANQUICIA
           </span>
-          <h2 className="font-display text-3xl uppercase tracking-wide sm:text-4xl">
+          <h2 className="font-display text-3xl font-extrabold uppercase sm:text-4xl">
             ¿Listo para tomar la mejor decisión de tu vida?
           </h2>
           <p className="mt-4 max-w-2xl text-brand-ink/75">
@@ -135,19 +135,19 @@ export function Franquicia() {
             id="lead-form"
             className="grid overflow-hidden rounded-2xl shadow-soft md:grid-cols-[0.9fr_1.1fr]"
           >
-            <div className="flex flex-col justify-center gap-4 bg-brand-green-900 p-8 text-brand-cream sm:p-11">
-              <span className="text-sm font-bold text-brand-yellow">
+            <div className="flex flex-col justify-center gap-4 bg-brand-yellow p-8 text-brand-ink sm:p-11">
+              <span className="font-accent text-sm font-extrabold text-brand-green-800">
                 Déjanos tus datos
               </span>
-              <h3 className="font-display text-3xl uppercase tracking-wide sm:text-4xl">
+              <h3 className="font-display text-3xl font-extrabold uppercase sm:text-4xl">
                 Empecemos la conversación
               </h3>
-              <p className="text-brand-cream/80">
+              <p className="text-brand-ink/75">
                 Cuéntanos quién eres y en qué ciudad te imaginas tu Mr. Elote.
                 Un asesor de franquicias te contacta directo por WhatsApp.
               </p>
-              <div className="mt-2 flex items-center gap-2.5 rounded-2xl border border-white/15 bg-white/5 px-3.5 py-3 text-sm">
-                <MessageCircle size={20} className="shrink-0 text-[#25d366]" />
+              <div className="mt-2 flex items-center gap-2.5 rounded-2xl border border-brand-ink/10 bg-white/50 px-3.5 py-3 text-sm">
+                <MessageCircle size={20} className="shrink-0 text-brand-green" />
                 Al enviar, se abre WhatsApp con tus datos listos para mandar.
               </div>
             </div>
@@ -226,7 +226,7 @@ export function Franquicia() {
 
               <button
                 type="submit"
-                className="mt-1 inline-flex items-center justify-center gap-2 rounded-full bg-[#25d366] px-6 py-3.5 font-bold text-white transition-transform hover:-translate-y-0.5"
+                className="mt-1 inline-flex items-center justify-center gap-2 rounded-full bg-[#25d366] px-6 py-3.5 font-accent font-extrabold text-white transition-transform hover:-translate-y-0.5"
               >
                 <MessageCircle size={20} />
                 Enviar por WhatsApp

@@ -4,15 +4,15 @@ import { asset } from "@/lib/utils";
 
 export function Footer() {
   return (
-    <footer className="bg-brand-ink text-brand-cream/70">
+    <footer className="bg-brand-green text-brand-cream/85">
       <div className="mx-auto grid max-w-6xl gap-8 px-5 py-14 sm:px-8 sm:pb-7 sm:pt-16 md:grid-cols-[1.3fr_1fr_1fr]">
         <div>
           <a href="#inicio" className="inline-flex">
             <Image
-              src={asset("/images/logo-a.png")}
+              src={asset("/images/logo-b.png")}
               alt="Mr. Elote Mix Gourmet"
-              width={671}
-              height={191}
+              width={1213}
+              height={347}
               className="h-10 w-auto"
             />
           </a>
@@ -22,7 +22,7 @@ export function Footer() {
           </p>
         </div>
         <div>
-          <h4 className="mb-3 font-bold text-brand-cream">Explora</h4>
+          <h4 className="mb-3 font-accent font-extrabold text-brand-cream">Explora</h4>
           <div className="flex flex-col gap-2 text-sm">
             <a href="#quienes-somos" className="hover:text-brand-yellow">
               Quiénes somos
@@ -36,7 +36,7 @@ export function Footer() {
           </div>
         </div>
         <div>
-          <h4 className="mb-3 font-bold text-brand-cream">Contacto</h4>
+          <h4 className="mb-3 font-accent font-extrabold text-brand-cream">Contacto</h4>
           <div className="flex flex-col gap-2 text-sm">
             <a
               href={`https://wa.me/${WHATSAPP_NUMBER}`}
@@ -52,7 +52,7 @@ export function Footer() {
           </div>
         </div>
       </div>
-      <div className="mx-auto flex max-w-6xl flex-col gap-1 border-t border-white/10 px-5 py-6 text-xs sm:flex-row sm:justify-between sm:px-8">
+      <div className="mx-auto flex max-w-6xl flex-col gap-1 border-t border-white/20 px-5 py-6 text-xs sm:flex-row sm:justify-between sm:px-8">
         <span>© {new Date().getFullYear()} Mr. Elote Mix Gourmet. Todos los derechos reservados.</span>
         <span>Franquicia de eloterías gourmet — Xalapa, México.</span>
       </div>

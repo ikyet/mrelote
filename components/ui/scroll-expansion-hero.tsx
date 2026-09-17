@@ -196,7 +196,6 @@ const ScrollExpandMedia = ({
               }}
               priority
             />
-            <div className="absolute inset-0 bg-black/10" />
           </motion.div>
 
           <div className="container mx-auto flex flex-col items-center justify-start relative z-10">
@@ -294,7 +293,7 @@ const ScrollExpandMedia = ({
                 <div className="flex flex-col items-center text-center relative z-10 mt-4 transition-none">
                   {date && (
                     <p
-                      className="text-2xl text-brand-cream/90"
+                      className="font-accent text-2xl font-extrabold text-brand-green-900"
                       style={{ transform: `translateX(-${textTranslateX}vw)` }}
                     >
                       {date}
@@ -302,7 +301,7 @@ const ScrollExpandMedia = ({
                   )}
                   {scrollToExpand && (
                     <p
-                      className="text-brand-yellow-100 font-medium text-center"
+                      className="font-accent font-bold text-center text-brand-green-700"
                       style={{ transform: `translateX(${textTranslateX}vw)` }}
                     >
                       {scrollToExpand}

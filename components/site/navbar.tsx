@@ -17,7 +17,7 @@ export function Navbar() {
   // Al entrar al sitio (todavía en el Hero) la barra se ve "limpia": solo el
   // logo de la marca, sin links/botón/burger — igual que pidió Luis. El resto
   // aparece con fade recién cuando el usuario ya bajó más de 40px (el mismo
-  // umbral que le pone el fondo oscuro a la barra), es decir, después de que
+  // umbral que le pone sombra a la barra), es decir, después de que
   // termina la animación del Hero.
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -33,7 +33,10 @@ export function Navbar() {
       <nav
         className={cn(
           "fixed inset-x-0 top-0 z-[120] flex items-center justify-between px-5 py-4 transition-[background-color,padding] duration-300 sm:px-8",
-          scrolled ? "bg-brand-ink/95 backdrop-blur-sm" : "bg-transparent",
+          // Siempre verde: el logo es blanco y la intro ahora es clara, así
+          // que una barra transparente lo dejaría invisible.
+          "bg-brand-green",
+          scrolled && "shadow-soft",
         )}
       >
         <a
@@ -42,10 +45,10 @@ export function Navbar() {
           onClick={close}
         >
           <Image
-            src={asset("/images/logo-a.png")}
+            src={asset("/images/logo-b.png")}
             alt="Mr. Elote Mix Gourmet"
-            width={671}
-            height={191}
+            width={1213}
+            height={347}
             priority
             className="h-10 w-auto"
           />
@@ -62,7 +65,7 @@ export function Navbar() {
               key={link.id}
               href={link.href}
               className={cn(
-                "text-sm font-semibold text-brand-cream/80 transition-colors hover:text-brand-yellow",
+                "font-accent text-sm font-bold text-brand-cream/90 transition-colors hover:text-brand-yellow",
                 active === link.id && "text-brand-yellow",
               )}
             >
@@ -74,7 +77,7 @@ export function Navbar() {
         <a
           href="#lead-form"
           className={cn(
-            "hidden rounded-full bg-brand-yellow px-5 py-2.5 text-sm font-bold text-brand-ink transition-[opacity,transform] duration-300 hover:-translate-y-0.5 md:inline-flex",
+            "hidden rounded-full bg-brand-yellow px-5 py-2.5 font-accent text-sm font-extrabold text-brand-ink transition-[opacity,transform] duration-300 hover:-translate-y-0.5 md:inline-flex",
             scrolled ? "opacity-100" : "pointer-events-none opacity-0",
           )}
         >
@@ -97,7 +100,7 @@ export function Navbar() {
 
       <div
         className={cn(
-          "fixed inset-0 z-[90] flex flex-col items-center justify-center gap-7 bg-brand-ink transition-transform duration-400 ease-[cubic-bezier(.2,.8,.2,1)] md:hidden",
+          "fixed inset-0 z-[90] flex flex-col items-center justify-center gap-7 bg-brand-green transition-transform duration-400 ease-[cubic-bezier(.2,.8,.2,1)] md:hidden",
           open ? "translate-y-0" : "-translate-y-full",
         )}
       >
@@ -106,7 +109,7 @@ export function Navbar() {
             key={link.id}
             href={link.href}
             onClick={close}
-            className="font-display text-3xl tracking-wide text-brand-cream"
+            className="font-display text-3xl font-extrabold text-brand-cream"
           >
             {link.label === "Conoce más" ? (
               <>
@@ -124,7 +127,7 @@ export function Navbar() {
         <a
           href="#lead-form"
           onClick={close}
-          className="mt-4 rounded-full bg-brand-yellow px-8 py-3.5 text-lg font-bold text-brand-ink"
+          className="mt-4 rounded-full bg-brand-yellow px-8 py-3.5 font-accent text-lg font-extrabold text-brand-ink"
         >
           Quiero mi franquicia
         </a>
