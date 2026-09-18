@@ -199,17 +199,24 @@ export function Experiencia() {
                       escena para que la tarjeta quede del alto de la escena
                       en vez de más alta por el texto encima. */}
                   <div
-                    className="flex flex-col gap-4 rounded-2xl border-4 border-black p-4 sm:flex-row sm:items-center sm:gap-6 sm:p-6"
+                    className="flex flex-col overflow-hidden rounded-2xl border-4 border-black sm:flex-row sm:items-stretch"
                     style={{ backgroundColor: product.bg }}
                   >
-                    <div className="flex w-full max-w-md flex-col sm:min-w-0 sm:max-w-none sm:flex-1">
+                    <div className="flex w-full max-w-md flex-col justify-center p-5 sm:min-w-0 sm:max-w-none sm:flex-1 sm:p-6">
                       <h3 className="font-display text-4xl font-extrabold uppercase leading-[0.95] text-brand-green-900">
                         {product.name}
                       </h3>
                       <p className="mt-3 max-w-sm text-brand-ink/70">{product.desc}</p>
                     </div>
 
-                    <div className="relative h-[40vh] w-[64vw] max-w-[380px] shrink-0 overflow-hidden sm:h-[46vh] sm:w-[78vw]">
+                    {/* La escena va pegada al marco de la tarjeta y con la
+                        proporción exacta del video, así el borde de la
+                        animación ES el borde de la tarjeta (sin margen ni
+                        franjas de color a los lados). */}
+                    <div
+                      className="relative w-full shrink-0 overflow-hidden sm:h-[46vh] sm:w-auto"
+                      style={{ aspectRatio: `${product.frames.w} / ${product.frames.h}` }}
+                    >
                       {!framesLoaded && (
                         <Image
                           src={asset("/images/mascot.jpg")}
@@ -226,7 +233,7 @@ export function Experiencia() {
                         width={product.frames.w}
                         height={product.frames.h}
                         aria-hidden="true"
-                        className="absolute inset-0 h-full w-full object-contain"
+                        className="absolute inset-0 h-full w-full object-cover"
                       />
                     </div>
                   </div>

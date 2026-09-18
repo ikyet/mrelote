@@ -31,29 +31,31 @@ export const PRODUCTS = [
   {
     n: "01",
     name: "Elote",
-    frames: { base: asset("/videos/frames/elote"), count: 61, w: 640, h: 640 },
-    bg: "#f1f1f7",
+    // Video nuevo del personaje (Corn_character_holding_elote): se le quitan
+    // los primeros 2 s y queda recortado en cuadrado; 48 frames a 12 fps.
+    frames: { base: asset("/videos/frames/elote"), count: 48, w: 640, h: 640 },
+    bg: "#f5f5f5",
     desc: "El clásico elote asado Mr. Elote, bañado en mayonesa, queso y limón — la base de nuestra receta de siempre.",
   },
   {
     n: "02",
     name: "Takis Blue Heat",
     frames: { base: asset("/videos/frames/takis-blue-heat"), count: 74, w: 640, h: 640 },
-    bg: "#ebece7",
+    bg: "#eaece3",
     desc: "Elote gratinado coronado con Takis Blue Heat triturados — un toque azul, picante y crocante para los más atrevidos.",
   },
   {
     n: "03",
     name: "Tostielote Flamin Hot",
     frames: { base: asset("/videos/frames/tostielote-flamin-hot"), count: 76, w: 640, h: 640 },
-    bg: "#f7f8f7",
+    bg: "#f6f9f7",
     desc: "Elote cargado de Tostitos Flamin' Hot machacados, queso derretido y un toque extra picante.",
   },
   {
     n: "04",
     name: "Tostielote",
     frames: { base: asset("/videos/frames/tostielote"), count: 61, w: 480, h: 640 },
-    bg: "#e5e4e5",
+    bg: "#e8e8e9",
     desc: "Nuestra versión insignia con capas de Tostitos crocantes sobre elote gratinado — textura y sabor en cada bocado.",
   },
   {
@@ -66,8 +68,10 @@ export const PRODUCTS = [
   {
     n: "06",
     name: "Volcano",
-    frames: { base: asset("/videos/frames/volcano"), count: 61, w: 640, h: 640 },
-    bg: "#efeef5",
+    // Recortado 64px de la derecha (quedó 576x640): así no se ve cortado el
+    // bowl contra el borde.
+    frames: { base: asset("/videos/frames/volcano"), count: 61, w: 576, h: 640 },
+    bg: "#eceef2",
     desc: "La presentación más espectacular del menú: elote gratinado con un volcán de queso derretido al centro.",
   },
 ] as const;
