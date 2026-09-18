@@ -36,7 +36,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="es"
       className={`${montserrat.variable} ${openSans.variable} ${nunito.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-brand-cream text-brand-ink">
+      <body className="min-h-full flex flex-col bg-white text-brand-ink">
         {children}
       </body>
     </html>

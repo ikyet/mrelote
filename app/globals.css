@@ -132,7 +132,7 @@ html {
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-brand-cream text-brand-ink;
+    @apply bg-white text-brand-ink;
     font-family: var(--font-open-sans), ui-sans-serif, system-ui, sans-serif;
   }
 }
@@ -154,7 +154,7 @@ html {
     box-sizing: border-box;
     border-radius: 12px;
     border: 2px solid rgba(20, 11, 8, 0.14);
-    background: var(--brand-paper);
+    background: #ffffff;
     padding: 0.85em 1em;
     font-family: inherit;
     font-size: 1rem;

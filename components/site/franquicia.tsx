@@ -11,7 +11,7 @@ function PlanCard({ plan }: { plan: (typeof PLANS)[number] }) {
   return (
     <article
       className={cn(
-        "flex flex-col overflow-hidden rounded-2xl border bg-brand-paper shadow-soft",
+        "flex flex-col overflow-hidden rounded-2xl border bg-white shadow-soft",
         plan.featured
           ? "border-2 border-brand-yellow"
           : "border-brand-ink/[0.08]",
@@ -100,7 +100,7 @@ export function Franquicia() {
   return (
     <section
       id="franquicia"
-      className="bg-brand-cream px-5 py-16 sm:px-8 sm:py-24"
+      className="bg-white px-5 py-16 sm:px-8 sm:py-24"
     >
       <div className="mx-auto max-w-6xl">
         <ScrollReveal>
@@ -155,7 +155,7 @@ export function Franquicia() {
 
             <form
               onSubmit={handleSubmit}
-              className="flex min-w-0 flex-col gap-4 bg-brand-cream p-8 sm:p-10"
+              className="flex min-w-0 flex-col gap-4 bg-white p-8 sm:p-10"
             >
               <div className="grid min-w-0 grid-cols-1 gap-4 sm:grid-cols-2">
                 <Field label="Nombre completo" htmlFor="f-nombre">

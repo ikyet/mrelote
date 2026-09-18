@@ -80,7 +80,7 @@ export function Experiencia() {
   }, []);
 
   return (
-    <section id="experiencia" className="bg-brand-cream px-5 py-16 sm:px-8 sm:py-24">
+    <section id="experiencia" className="bg-white px-5 py-16 sm:px-8 sm:py-24">
       <div className="mx-auto max-w-6xl">
         <ScrollReveal>
           <span className="mb-2 block font-accent text-sm font-extrabold tracking-[0.14em] text-brand-yellow-600">
@@ -121,7 +121,7 @@ export function Experiencia() {
                       apiladas (texto arriba, foto abajo); desde `sm` el
                       texto se pone al lado de la foto para que la tarjeta
                       quede del alto de la foto. */}
-                  <div className="flex flex-col overflow-hidden rounded-2xl border-4 border-black bg-brand-paper sm:flex-row sm:items-stretch">
+                  <div className="flex flex-col overflow-hidden rounded-2xl border-4 border-black bg-white sm:flex-row sm:items-stretch">
                     <div className="flex w-full max-w-md flex-col justify-center p-5 sm:min-w-0 sm:max-w-none sm:flex-1 sm:p-6">
                       <h3 className="font-display text-4xl font-extrabold uppercase leading-[0.95] text-brand-green-900">
                         {product.name}

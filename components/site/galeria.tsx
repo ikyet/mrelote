@@ -116,7 +116,7 @@ export function Galeria() {
   }, []);
 
   return (
-    <div className="bg-brand-cream px-5 sm:px-8">
+    <div className="bg-white px-5 sm:px-8">
       <div
         ref={trackRef}
         className="relative"
@@ -132,7 +132,7 @@ export function Galeria() {
               1 / {N}
             </span>
             {/* Una sola frase para toda la galería: ya no cambia foto por foto. */}
-            <p className="mx-auto mt-1 max-w-[16ch] rounded-2xl bg-brand-cream/85 px-3 py-1 font-display text-lg font-extrabold uppercase leading-tight text-brand-green-900 md:mx-0 md:bg-transparent md:px-0 md:text-5xl">
+            <p className="mx-auto mt-1 max-w-[16ch] rounded-2xl bg-white/85 px-3 py-1 font-display text-lg font-extrabold uppercase leading-tight text-brand-green-900 md:mx-0 md:bg-transparent md:px-0 md:text-5xl">
               Más que solo elote
             </p>
           </div>

@@ -12,7 +12,7 @@ export function QuienesSomos() {
   return (
     <section
       id="quienes-somos"
-      className="bg-brand-cream px-5 py-16 sm:px-8 sm:py-24"
+      className="bg-white px-5 py-16 sm:px-8 sm:py-24"
     >
       <div className="mx-auto max-w-6xl">
         <ScrollReveal>

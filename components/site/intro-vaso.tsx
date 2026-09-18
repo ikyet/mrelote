@@ -1,46 +1,83 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { asset } from "@/lib/utils";
 
 // Intro animada: el vaso de Mr. Elote se llena de elote mientras bajas. Es un
-// video de 8 s generado con IA (Cup_filling_with_corn_animation), convertido a
-// 96 frames (12 fps, 1280x720) con el fondo gris corregido a blanco cuadro por
+// video de 8 s a 24 fps generado con IA (Cup_filling_with_corn_animation),
+// convertido a sus 192 frames con el fondo gris corregido a blanco cuadro por
 // cuadro. El logo y la frase "it's elote o'clock" ya vienen en el video. Los
 // frames se dibujan en un <canvas> según el scroll: si subes, se regresa.
-const FRAME_COUNT = 96;
-const FRAME_W = 1280;
-const FRAME_H = 720;
-const frameSrc = (i: number) =>
-  asset(`/intro/vaso/frame-${String(i + 1).padStart(3, "0")}.webp`);
+//
+// Dos juegos de frames: HD (1920x1080, escalado desde el original de 720p con
+// lanczos + nitidez) para pantallas grandes, y SD (1280x720, el tamaño
+// original) para celular, donde el 1080 no se nota y solo pesaría más.
+const FRAME_COUNT = 192;
+const SETS = {
+  hd: { dir: "vaso-hd", w: 1920, h: 1080 },
+  sd: { dir: "vaso-sd", w: 1280, h: 720 },
+} as const;
+type SetKey = keyof typeof SETS;
+const frameSrc = (set: SetKey, i: number) =>
+  asset(`/intro/${SETS[set].dir}/frame-${String(i + 1).padStart(3, "0")}.webp`);
 
 // El video ocupa el 92% del scroll de la sección; el resto se queda en el
 // último cuadro antes de pasar a la página.
 const VIDEO_END = 0.92;
 
+// Orden de carga: primero 1 de cada 4 frames (para poder bajar casi de
+// inmediato) y luego se rellenan los demás.
+const LOAD_ORDER = (() => {
+  const order: number[] = [];
+  for (const step of [4, 2, 1]) {
+    for (let i = 0; i < FRAME_COUNT; i += step) {
+      if (!order.includes(i)) order.push(i);
+    }
+  }
+  return order;
+})();
+
 const clamp01 = (v: number) => Math.min(1, Math.max(0, v));
+
+// Pantalla grande (HD) o celular (SD). En el servidor se asume celular.
+const WIDE_QUERY = "(min-width: 768px)";
+const subscribeWide = (cb: () => void) => {
+  const m = window.matchMedia(WIDE_QUERY);
+  m.addEventListener("change", cb);
+  return () => m.removeEventListener("change", cb);
+};
+const getWide = () => window.matchMedia(WIDE_QUERY).matches;
+const getWideServer = () => false;
 
 export function IntroVaso() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const hintRef = useRef<HTMLDivElement | null>(null);
+  const wide = useSyncExternalStore(subscribeWide, getWide, getWideServer);
+  const set: SetKey = wide ? "hd" : "sd";
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    const frames: HTMLImageElement[] = [];
+    const { w, h } = SETS[set];
+    const frames: (HTMLImageElement | undefined)[] = new Array(FRAME_COUNT);
     let lastDrawn = -1;
     let ticking = false;
-    let loaded = 0;
+    let cancelled = false;
+
+    const isLoaded = (i: number) => {
+      const img = frames[i];
+      return !!img && img.complete && img.naturalWidth > 0;
+    };
 
     const draw = (idx: number) => {
       const ctx = canvasRef.current?.getContext("2d");
       if (!ctx) return;
-      // Si ese frame aún no llega, usar el cargado más cercano hacia atrás.
-      for (let i = idx; i >= 0; i--) {
-        const img = frames[i];
-        if (img?.complete && img.naturalWidth) {
+      // Si ese frame aún no llega, usar el cargado más cercano.
+      for (let d = 0; d < FRAME_COUNT; d++) {
+        for (const i of [idx - d, idx + d]) {
+          if (i < 0 || i >= FRAME_COUNT || !isLoaded(i)) continue;
           if (i !== lastDrawn) {
-            ctx.drawImage(img, 0, 0, FRAME_W, FRAME_H);
+            ctx.drawImage(frames[i]!, 0, 0, w, h);
             lastDrawn = i;
           }
           return;
@@ -69,29 +106,36 @@ export function IntroVaso() {
       });
     };
 
-    for (let i = 0; i < FRAME_COUNT; i++) {
+    // Carga por etapas, de 6 en 6 para no saturar la conexión.
+    let next = 0;
+    const loadNext = () => {
+      if (cancelled || next >= LOAD_ORDER.length) return;
+      const i = LOAD_ORDER[next++];
       const img = new Image();
       img.decoding = "async";
-      img.src = frameSrc(i);
-      img.onload = () => {
-        loaded += 1;
-        if (i === 0) {
-          setReady(true);
-          update();
-        }
-        if (loaded === FRAME_COUNT) update();
+      img.onload = img.onerror = () => {
+        if (cancelled) return;
+        if (i === 0) setReady(true);
+        lastDrawn = -1;
+        update();
+        loadNext();
       };
-      frames.push(img);
-    }
+      img.src = frameSrc(set, i);
+      frames[i] = img;
+    };
+    for (let k = 0; k < 6; k++) loadNext();
 
     update();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
     return () => {
+      cancelled = true;
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
     };
-  }, []);
+  }, [set]);
+
+  const { w, h } = SETS[set];
 
   return (
     <section id="inicio" ref={sectionRef} className="relative h-[320vh] bg-white">
@@ -101,18 +145,19 @@ export function IntroVaso() {
             logo y la frase se mueven de orilla a orilla y se cortaban. */}
         <div
           className="relative w-screen shrink-0 sm:w-[min(100vw,calc((100dvh-72px)*16/9))]"
-          style={{ aspectRatio: `${FRAME_W} / ${FRAME_H}` }}
+          style={{ aspectRatio: "16 / 9" }}
         >
           <canvas
+            key={set}
             ref={canvasRef}
-            width={FRAME_W}
-            height={FRAME_H}
+            width={w}
+            height={h}
             aria-label="Vaso de Mr. Elote llenándose de elote"
             className="absolute inset-0 h-full w-full"
           />
           {!ready && (
             // eslint-disable-next-line @next/next/no-img-element
-            <img src={frameSrc(0)} alt="" className="absolute inset-0 h-full w-full" />
+            <img src={frameSrc(set, 0)} alt="" className="absolute inset-0 h-full w-full" />
           )}
         </div>
 
