@@ -105,8 +105,8 @@ export function QuienesSomos() {
           <div className="grid gap-6 rounded-3xl bg-brand-yellow px-7 py-9 text-center sm:grid-cols-[auto_1fr] sm:items-center sm:px-11 sm:text-left">
             <div className="mx-auto h-[110px] w-[110px] shrink-0 overflow-hidden rounded-full border-4 border-white sm:mx-0">
               <Image
-                src={asset("/images/esquite.jpg")}
-                alt="Esquite Mr. Elote"
+                src={asset("/images/cita-esquite.jpg")}
+                alt="Vaso de esquite Mr. Elote"
                 width={110}
                 height={110}
                 className="h-full w-full object-cover"
