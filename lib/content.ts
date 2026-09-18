@@ -9,52 +9,33 @@ export const NAV_LINKS = [
   { href: "#franquicia", label: "Franquicias", id: "franquicia" },
 ] as const;
 
-// NOTA: los nombres son los que Luis confirmó (títulos de los videos que
-// mandó). Las descripciones son un borrador nuestro para tener algo de texto
-// mientras Luis confirma o ajusta la redacción real de cada producto.
-// "image": foto real del producto (900x1125, 4:5). Antes cada producto era
-// una animación de la mascota (Mr. Guzmán) hecha de frames; el cliente pidió
-// cambiarlas por fotos del producto. Las fotos salen de su zip "fotos para la
-// página" (#11, #13, #14 y #16; el Tostielote Flamin Hot es el plato de la derecha
-// recortado de la #16), de DSC05875 (el vaso) y de una captura que mandó
-// el cliente para el Takis Blue Heat (560x700, baja resolución).
+// Nombres y textos tal cual los mandó el cliente (18-sep). "image": foto
+// real del producto (900x1125, 4:5), de su zip "fotos productos pagina web"
+// (1.jpg–4.jpg, en este mismo orden).
 export const PRODUCTS = [
   {
     n: "01",
-    name: "Elote",
-    image: asset("/images/productos/elote.jpg"),
-    desc: "El clásico elote asado Mr. Elote, bañado en mayonesa, queso y limón — la base de nuestra receta de siempre.",
+    name: "French-Squite-Fries",
+    image: asset("/images/productos/french-squite-fries.jpg"),
+    desc: "Una combinación única que reúne lo mejor de dos antojos: papas a la francesa y nuestro clásico esquite. Un platillo diferente, abundante y lleno de sabor, creado para disfrutar Mr. Elote de una forma totalmente nueva.",
   },
   {
     n: "02",
-    name: "Takis Blue Heat",
-    image: asset("/images/productos/takis-blue-heat.jpg"),
-    desc: "Elote gratinado coronado con Takis Blue Heat triturados — un toque azul, picante y crocante para los más atrevidos.",
+    name: "Volcano",
+    image: asset("/images/productos/volcano.jpg"),
+    desc: "Un esquite bañado en queso cheddar y acompañado de papas crujientes. Una combinación llena de sabor, creada para quienes siempre quieren llevar su antojo al siguiente nivel.",
   },
   {
     n: "03",
-    name: "Tostielote Flamin Hot",
-    image: asset("/images/productos/tostielote-flamin-hot.jpg"),
-    imagePosition: "center 75%",
-    desc: "Elote cargado de Tostitos Flamin' Hot machacados, queso derretido y un toque extra picante.",
+    name: "Elote Revolcado",
+    image: asset("/images/productos/elote-revolcado.jpg"),
+    desc: "No es nuevo, pero nunca puede faltar. Un clásico de Mr. Elote cubierto con tus papas trituradas favoritas, lleno de textura, sabor y ese toque monchoso que lo hace irresistible.",
   },
   {
     n: "04",
-    name: "Tostielote",
-    image: asset("/images/productos/tostielote.jpg"),
-    desc: "Nuestra versión insignia con capas de Tostitos crocantes sobre elote gratinado — textura y sabor en cada bocado.",
-  },
-  {
-    n: "05",
-    name: "Vaso De Elote",
-    image: asset("/images/productos/vaso-de-elote.jpg"),
-    desc: "El esquite de siempre, servido en vaso: grano tierno, mayonesa, queso y limón, listo para llevar.",
-  },
-  {
-    n: "06",
-    name: "Volcano",
-    image: asset("/images/productos/volcano.jpg"),
-    desc: "La presentación más espectacular del menú: elote gratinado con un volcán de queso derretido al centro.",
+    name: "Esquite",
+    image: asset("/images/productos/esquite.jpg"),
+    desc: "El clásico que nunca falla. Granos de elote llenos de sabor, preparados con los ingredientes que todos conocemos y amamos. Sencillo, delicioso y siempre indispensable en Mr. Elote.",
   },
 ] as const;
 

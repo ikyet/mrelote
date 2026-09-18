@@ -8,20 +8,15 @@ import { cn } from "@/lib/utils";
 
 const N = PRODUCTS.length;
 
-// Patrón de posiciones en "vaivén" que pidió Luis: los primeros 3 productos
-// entran derecha → centro → izquierda, y los últimos 3 regresan en reversa
-// izquierda → centro → derecha — como un péndulo a lo largo de los 6
-// productos. Cada producto entra deslizándose desde ese lado (con fade) y,
-// al dejar de estar activo, se desvanece de vuelta a esa misma posición en
-// vez de deslizarse hacia afuera — un fundido discreto, no un rebote.
-const POSITION_BY_INDEX = [
-  "right",
-  "center",
-  "left",
-  "left",
-  "center",
-  "right",
-] as const;
+// Patrón de posiciones en "vaivén" que pidió Luis: la primera mitad de los
+// productos va derecha → izquierda y la segunda regresa izquierda → derecha,
+// como un péndulo (con 4 productos: derecha, izquierda, izquierda, derecha).
+// Cada producto entra deslizándose desde ese lado (con fade) y, al dejar de
+// estar activo, se desvanece de vuelta a esa misma posición en vez de
+// deslizarse hacia afuera — un fundido discreto, no un rebote.
+const POSITION_BY_INDEX = ["right", "left", "left", "right"] as const;
+// Cuánto scroll (en vh) le toca a cada producto.
+const VH_PER_PRODUCT = 70;
 type Position = (typeof POSITION_BY_INDEX)[number];
 
 function alignClasses(pos: Position) {
@@ -101,7 +96,11 @@ export function Experiencia() {
           </p>
         </ScrollReveal>
 
-        <div ref={visualRef} className="relative mt-10 h-[420vh]">
+        <div
+          ref={visualRef}
+          className="relative mt-10"
+          style={{ height: `${N * VH_PER_PRODUCT}vh` }}
+        >
           <div className="sticky top-24 h-[78vh] max-h-[720px] min-h-[520px] overflow-hidden">
             {PRODUCTS.map((product, i) => {
               const pos = POSITION_BY_INDEX[i];
@@ -141,10 +140,6 @@ export function Experiencia() {
                         sizes="(min-width: 640px) 40vw, 90vw"
                         loading={i < 2 ? "eager" : "lazy"}
                         className="object-cover"
-                        style={{
-                          objectPosition:
-                            "imagePosition" in product ? product.imagePosition : "center",
-                        }}
                       />
                     </div>
                   </div>
