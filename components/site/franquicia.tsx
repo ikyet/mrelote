@@ -23,6 +23,7 @@ function PlanCard({ plan }: { plan: (typeof PLANS)[number] }) {
           alt={plan.name}
           fill
           className="object-cover"
+          style={{ objectPosition: plan.imagePosition }}
           sizes="(min-width: 900px) 33vw, 90vw"
         />
         <span className="absolute left-4 top-4 rounded-full bg-brand-green px-3 py-1.5 font-accent text-xs font-extrabold text-brand-cream">

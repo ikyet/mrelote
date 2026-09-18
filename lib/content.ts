@@ -77,8 +77,8 @@ export const PRODUCTS = [
 ] as const;
 
 // Fotos generales que mandó el cliente (numeradas como en su zip, #19–#55),
-// convertidas a JPG de 1100px. Cada una lleva el texto de la categoría a la
-// que pertenece; la galería las va agrandando una por una al hacer scroll.
+// en dos tamaños (1100px escritorio, 700px celular). La galería las va
+// agrandando una por una al hacer scroll, con una sola frase fija.
 export const GALLERY = [
   { src: asset("/images/galeria/19.jpg"), srcSm: asset("/images/galeria/19-sm.jpg"), alt: "Sucursal Mr. Elote con su diseño de marca" },
   { src: asset("/images/galeria/20.jpg"), srcSm: asset("/images/galeria/20-sm.jpg"), alt: "Clientes disfrutando productos Mr. Elote" },
@@ -122,6 +122,7 @@ export const GALLERY = [
 export const PLANS = [
   {
     image: asset("/images/plan-1.jpg"),
+    imagePosition: "center",
     badge: "Hazlo tú mismo",
     name: "Punto Xpress",
     price: "$138,000",
@@ -132,6 +133,8 @@ export const PLANS = [
   },
   {
     image: asset("/images/plan-2.jpg"),
+    // Foto vertical: se encuadra arriba para que se vea el letrero.
+    imagePosition: "center top",
     badge: "Hazlo tú mismo",
     name: "Punto Mr.",
     price: "$168,000",
@@ -142,6 +145,7 @@ export const PLANS = [
   },
   {
     image: asset("/images/plan-3.jpg"),
+    imagePosition: "center",
     badge: "Llave en mano",
     name: "Punto Xpress",
     price: "$440,000",

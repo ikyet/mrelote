@@ -41,7 +41,7 @@ export function QuienesSomos() {
                   +8 años
                 </b>
                 <span className="text-sm leading-snug">
-                  enamorando paladares desde Xalapa, Ver.
+                  enamorando paladares
                 </span>
               </div>
             </div>
