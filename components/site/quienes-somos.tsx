@@ -86,15 +86,16 @@ export function QuienesSomos() {
                   EN PLENA EXPANSIÓN
                 </span>
                 <p className="mt-3 font-script text-xl font-extrabold italic leading-snug text-brand-yellow">
-                  &ldquo;Persistencia aún en la contingencia.&rdquo;
+                  &ldquo;Seguimos creciendo, llevando el sabor de Mr. Elote a
+                  nuevos destinos.&rdquo;
                 </p>
                 <p className="mt-2 text-sm leading-relaxed text-brand-cream/90">
-                  Bajo el liderazgo de nuestro fundador, Jorge Correa,
-                  superamos las 30 sucursales y seguimos creciendo con la
-                  mira puesta también en el mercado estadounidense.
+                  Nuestra expansión continúa con nuevas sucursales, nuevos
+                  mercados y una visión clara: convertir a Mr. Elote Mix
+                  Gourmet en una marca con presencia nacional.
                 </p>
                 <cite className="mt-3 block text-xs not-italic text-brand-cream/75">
-                  — Jorge Correa, fundador de Mr. Elote Mix Gourmet
+                  — Mr. Elote Mix Gourmet
                 </cite>
               </div>
             </ScrollReveal>

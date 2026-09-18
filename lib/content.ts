@@ -12,66 +12,48 @@ export const NAV_LINKS = [
 // NOTA: los nombres son los que Luis confirmó (títulos de los videos que
 // mandó). Las descripciones son un borrador nuestro para tener algo de texto
 // mientras Luis confirma o ajusta la redacción real de cada producto.
-// "frames": secuencia de imágenes (no video) que dibuja el módulo de
-// Experiencia en un <canvas>, un frame por posición de scroll — la misma
-// técnica que el proyecto de referencia de Nescafé, en vez de un <video>
-// buscando por currentTime. base = carpeta bajo /public/videos/frames/,
-// count = cuántos frame-NNN.webp hay, w/h = tamaño real de esos webp
-// (se dibujan tal cual en el canvas, que usa object-fit:cover por CSS).
-// "bg": color de fondo real de esos frame-NNN.webp (medido con un script
-// que muestrea las esquinas superiores de todos los cuadros de cada
-// producto) — cada producto tiene el suyo, ya no un color único para
-// los 6. Se usa como fondo de la tarjeta que envuelve el texto+escena de
-// ese producto (ver "Tarjeta con marco negro" en components/site/experiencia.tsx).
-// Los .mp4 originales (de donde salieron estos frames con ffmpeg) ya no se
-// usan en la página y se quitaron de /public/videos — si algún día hace
-// falta re-extraer los frames con otro ajuste, pide de nuevo los videos
-// fuente o revisa el historial del proyecto.
+// "image": foto real del producto (900x1125, 4:5). Antes cada producto era
+// una animación de la mascota (Mr. Guzmán) hecha de frames; el cliente pidió
+// cambiarlas por fotos del producto. Las fotos salen de su zip "fotos para la
+// página" (#11, #13, #14 y #16; el Tostielote Flamin Hot es el plato de la derecha
+// recortado de la #16), de DSC05875 (el vaso) y de una captura que mandó
+// el cliente para el Takis Blue Heat (560x700, baja resolución).
 export const PRODUCTS = [
   {
     n: "01",
     name: "Elote",
-    // Video nuevo del personaje (Corn_character_holding_elote): se le quitan
-    // los primeros 2 s y queda recortado en cuadrado; 48 frames a 12 fps.
-    frames: { base: asset("/videos/frames/elote"), count: 48, w: 640, h: 640 },
-    bg: "#f5f5f5",
+    image: asset("/images/productos/elote.jpg"),
     desc: "El clásico elote asado Mr. Elote, bañado en mayonesa, queso y limón — la base de nuestra receta de siempre.",
   },
   {
     n: "02",
     name: "Takis Blue Heat",
-    frames: { base: asset("/videos/frames/takis-blue-heat"), count: 74, w: 640, h: 640 },
-    bg: "#eaece3",
+    image: asset("/images/productos/takis-blue-heat.jpg"),
     desc: "Elote gratinado coronado con Takis Blue Heat triturados — un toque azul, picante y crocante para los más atrevidos.",
   },
   {
     n: "03",
     name: "Tostielote Flamin Hot",
-    frames: { base: asset("/videos/frames/tostielote-flamin-hot"), count: 76, w: 640, h: 640 },
-    bg: "#f6f9f7",
+    image: asset("/images/productos/tostielote-flamin-hot.jpg"),
+    imagePosition: "center 75%",
     desc: "Elote cargado de Tostitos Flamin' Hot machacados, queso derretido y un toque extra picante.",
   },
   {
     n: "04",
     name: "Tostielote",
-    frames: { base: asset("/videos/frames/tostielote"), count: 61, w: 480, h: 640 },
-    bg: "#e8e8e9",
+    image: asset("/images/productos/tostielote.jpg"),
     desc: "Nuestra versión insignia con capas de Tostitos crocantes sobre elote gratinado — textura y sabor en cada bocado.",
   },
   {
     n: "05",
     name: "Vaso De Elote",
-    frames: { base: asset("/videos/frames/vaso-de-elote"), count: 32, w: 480, h: 640 },
-    bg: "#f9f9fa",
+    image: asset("/images/productos/vaso-de-elote.jpg"),
     desc: "El esquite de siempre, servido en vaso: grano tierno, mayonesa, queso y limón, listo para llevar.",
   },
   {
     n: "06",
     name: "Volcano",
-    // Recortado 64px de la derecha (quedó 576x640): así no se ve cortado el
-    // bowl contra el borde.
-    frames: { base: asset("/videos/frames/volcano"), count: 61, w: 576, h: 640 },
-    bg: "#eceef2",
+    image: asset("/images/productos/volcano.jpg"),
     desc: "La presentación más espectacular del menú: elote gratinado con un volcán de queso derretido al centro.",
   },
 ] as const;
