@@ -1,5 +1,5 @@
 import { Navbar } from "@/components/site/navbar";
-import { Hero } from "@/components/site/hero";
+import { IntroVaso } from "@/components/site/intro-vaso";
 import { Marquee } from "@/components/site/marquee";
 import { QuienesSomos } from "@/components/site/quienes-somos";
 import { Experiencia } from "@/components/site/experiencia";
@@ -12,7 +12,7 @@ export default function Home() {
     <>
       <Navbar />
       <main>
-        <Hero />
+        <IntroVaso />
         <Marquee />
         <QuienesSomos />
         <Experiencia />
