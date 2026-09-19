@@ -9,9 +9,9 @@ import { asset } from "@/lib/utils";
 // cuadro. El logo y la frase "it's elote o'clock" ya vienen en el video. Los
 // frames se dibujan en un <canvas> según el scroll: si subes, se regresa.
 //
-// Dos juegos de frames: HD (1920x1080, escalado desde el original de 720p con
-// lanczos + nitidez) para pantallas grandes, y SD (1280x720, el tamaño
-// original) para celular, donde el 1080 no se nota y solo pesaría más.
+// Dos juegos de frames, sacados del original de 720p mejorado con IA
+// (Real-ESRGAN x4plus, luego reducido): HD (1920x1080) para pantallas grandes y
+// SD (1280x720) para celular, donde el 1080 no se nota y solo pesaría más.
 const FRAME_COUNT = 192;
 const SETS = {
   hd: { dir: "vaso-hd", w: 1920, h: 1080 },
