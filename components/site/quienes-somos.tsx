@@ -5,7 +5,7 @@ import { asset } from "@/lib/utils";
 const STATS = [
   { year: "2016", label: "Nace la marca en Xalapa, Veracruz" },
   { year: "2018", label: "Inicia operación como franquicia" },
-  { year: "2022", label: "Mayor crecimiento del segmento" },
+  { year: "2026", label: "Marca con mayor crecimiento del segmento" },
 ];
 
 export function QuienesSomos() {
